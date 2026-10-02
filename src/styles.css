@@ -303,7 +303,7 @@ em {
   flex: 0 0 58px;
   padding: 0;
   border-radius: var(--avatar-radius);
-  background: var(--surface);
+  background: #ded9d5;
   box-shadow:
     0 7px 18px #0005,
     inset 0 0 0 1px #c4f0d355;
@@ -314,7 +314,7 @@ em {
   transition:
     border-radius 0.18s linear,
     box-shadow 0.25s ease;
-  overflow: visible;
+  overflow: hidden;
   position: relative;
 }
 .hero-avatar:hover {
@@ -330,7 +330,7 @@ em {
   border-radius: inherit;
   transform-style: preserve-3d;
   transform: rotateX(calc(var(--look-y) * -9deg))
-    rotateY(calc(var(--look-x) * 11deg)) translateZ(3px);
+    rotateY(calc(var(--look-x) * 11deg)) translateZ(3px) scale(1.06);
   transition: transform 90ms linear;
 }
 .avatar-tilt img {

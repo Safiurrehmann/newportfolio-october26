@@ -3,7 +3,7 @@
 ## Automated
 
 - `npm run build`: TypeScript check and production bundle passed.
-- `npm test`: 11 tests passed. Includes curated answers, unknown facts, private-prompt requests, input and role validation, mocked AI failure and structured responses, destination allowlisting, HTTP rate limits, and continuous/reversible non-overlapping scroll panels.
+- `npm test`: 14 tests passed. Includes curated answers, unknown facts, private-prompt requests, input and role validation, mocked AI failure and structured responses, destination allowlisting, HTTP rate limits, continuous/reversible non-overlapping scroll panels, avatar motion limits, and angled-image coverage.
 - `npm audit --omit=dev --audit-level=high`: 0 vulnerabilities reported.
 - Production HTTP smoke check: homepage, API status, and résumé all return 200; résumé is served as application/pdf (130,248 bytes).
 
@@ -30,7 +30,8 @@ Screenshots: `desktop-hero.png`, `desktop-assembly.png`, `mobile-hero.png`.
 - Scroll progress applies a small scale, offset, corner-radius, and rotation morph; the full change remains within 16% scale, 8 pixels horizontal movement, 3 pixels vertical movement, and 8 degrees rotation.
 - Reduced-motion mode keeps the original static form.
 - Browser checks confirmed the avatar at desktop and 390-pixel mobile layouts with no horizontal overflow or console warnings.
-- Automated tests cover clamping, subtle motion limits, and the reduced-motion state. Screenshot: `interactive-avatar-mobile.png`.
+- The image now overscans behind the avatar's clipped outer mask, preventing its background from separating at strong perspective angles.
+- Automated tests cover clamping, subtle motion limits, the reduced-motion state, and sufficient tilt overscan. Screenshots: `interactive-avatar-mobile.png`, `avatar-tilt-fixed.png`.
 
 ## Not yet verified
 
