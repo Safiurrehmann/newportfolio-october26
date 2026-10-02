@@ -19,6 +19,7 @@ import {
 import { phases, projects, social } from "./content";
 import { narrativeFrame } from "../shared/narrative.mjs";
 import Bip, { BipCharacter } from "./Bip";
+import HeroAvatar from "./HeroAvatar";
 const HarnessScene = lazy(() => import("./HarnessScene"));
 
 function initialTheme() {
@@ -249,10 +250,10 @@ export default function App() {
               <span>PORTFOLIO — 2026</span>
             </div>
             <div className="hero-copy">
-              <p className="hero-identity">
-                <span className="tiny-light" />
-                Muhammad Safi ur Rehman
-              </p>
+              <div className="hero-identity">
+                <HeroAvatar progress={progress} reduced={reduced} />
+                <span>Muhammad Safi ur Rehman</span>
+              </div>
               <div className="narrative-stack">
                 {phases.map((chapter, index) => (
                   <div

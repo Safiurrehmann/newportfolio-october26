@@ -29,6 +29,7 @@ The production server serves the built website and Bip at http://localhost:4318.
 - Minimal typography and rules instead of information cards. Five expandable case studies support direct hash links.
 - Experience, skills, contact, working social links, clipboard email, a local résumé download, and locally hosted fonts.
 - Bip is a small original CSS character with an accessible conversation panel and portfolio navigation.
+- A compact avatar leads the hero identity line. It uses lightweight CSS perspective, cursor-following highlights, click-to-blink feedback, and a restrained scroll-linked morph; reduced-motion visitors get a static version.
 
 ## Enable Bip's AI answers
 
@@ -48,6 +49,7 @@ For deployment, set `SITE_ORIGIN` to the actual site origin and an appropriate `
 - `public/resume.pdf`: approved résumé with embedded LinkedIn and Twitter links.
 - `src/styles.css`: visual system and responsive styles.
 - `src/HarnessScene.tsx`: the single 3D scene.
+- `src/HeroAvatar.tsx` and `public/safi-avatar.png`: the interactive hero avatar.
 
 No fabricated availability, employer metrics, or public repository/demo links are included. Clicky evidence is qualified by the build report. The final scene is explicitly an illustrative architecture, not a live estimate.
 

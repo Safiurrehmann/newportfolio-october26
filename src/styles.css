@@ -295,9 +295,134 @@ em {
   font-weight: 500;
   letter-spacing: -0.025em;
 }
-.hero-identity .tiny-light {
-  width: 6px;
-  height: 6px;
+.hero-avatar {
+  --look-x: 0;
+  --look-y: 0;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  padding: 0;
+  border-radius: var(--avatar-radius);
+  background: var(--surface);
+  box-shadow:
+    0 7px 18px #0005,
+    inset 0 0 0 1px #c4f0d355;
+  transform: translate3d(var(--avatar-x), var(--avatar-y), 0)
+    scale(var(--avatar-scale)) rotate(var(--avatar-turn));
+  transform-style: preserve-3d;
+  perspective: 450px;
+  transition:
+    border-radius 0.18s linear,
+    box-shadow 0.25s ease;
+  overflow: visible;
+  position: relative;
+}
+.hero-avatar:hover {
+  box-shadow:
+    0 10px 24px #0008,
+    inset 0 0 0 1px var(--accent);
+}
+.avatar-tilt {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  transform-style: preserve-3d;
+  transform: rotateX(calc(var(--look-y) * -9deg))
+    rotateY(calc(var(--look-x) * 11deg)) translateZ(3px);
+  transition: transform 90ms linear;
+}
+.avatar-tilt img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.avatar-shine {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at calc(50% + var(--look-x) * 25%) calc(30% + var(--look-y) * 18%),
+    #fff8 0,
+    #fff0 35%
+  );
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+.avatar-eye {
+  position: absolute;
+  top: 48.2%;
+  width: 10%;
+  height: 14%;
+  pointer-events: none;
+}
+.avatar-eye.eye-left {
+  left: 34.2%;
+}
+.avatar-eye.eye-right {
+  left: 57.2%;
+}
+.avatar-eye i {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  left: calc(50% + var(--look-x) * 25%);
+  top: calc(38% + var(--look-y) * 22%);
+  border-radius: 50%;
+  background: #d8ffe5;
+  box-shadow: 0 0 4px #fff;
+  transform: translate(-50%, -50%) translateZ(7px);
+}
+.avatar-lids,
+.avatar-lids i {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.avatar-lids i {
+  inset: auto;
+  top: 46.8%;
+  width: 10.5%;
+  height: 16%;
+  border-radius: 50%;
+  background: #dfa06e;
+  opacity: 0;
+  transform: scaleY(0.05);
+}
+.avatar-lids .lid-left {
+  left: 34%;
+}
+.avatar-lids .lid-right {
+  left: 57%;
+}
+.avatar-lids.blink i {
+  animation: avatar-blink 0.42s ease-in-out;
+}
+@keyframes avatar-blink {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scaleY(0.05);
+  }
+  45%,
+  55% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+.hero-avatar:focus-visible {
+  outline-offset: 5px;
+}
+@media (hover: none) {
+  .avatar-tilt {
+    transition: transform 0.3s ease;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .avatar-tilt {
+    transform: none;
+  }
 }
 .narrative-stack {
   display: grid;
@@ -402,12 +527,20 @@ h1 em,
   pointer-events: none;
   white-space: nowrap;
   font: 500 13px var(--mono);
-  letter-spacing: .06em;
+  letter-spacing: 0.06em;
   color: #163b2b;
   text-shadow: 0 1px 7px #e2ffec;
 }
-.scene-failed .core-label { color: #e4ffef; text-shadow: none; }
-@media (max-width: 760px) { .core-label { font-size: 9px; letter-spacing: .02em; } }
+.scene-failed .core-label {
+  color: #e4ffef;
+  text-shadow: none;
+}
+@media (max-width: 760px) {
+  .core-label {
+    font-size: 9px;
+    letter-spacing: 0.02em;
+  }
+}
 .scene-caption {
   position: absolute;
   bottom: 7%;
@@ -1582,6 +1715,15 @@ footer .text-button {
     font-size: 18px;
     gap: 9px;
     margin-bottom: 11px;
+  }
+  .hero-avatar {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+  .avatar-eye i {
+    width: 2px;
+    height: 2px;
   }
   .hero-copy .eyebrow {
     font-size: 8px;

@@ -22,6 +22,16 @@
 
 Screenshots: `desktop-hero.png`, `desktop-assembly.png`, `mobile-hero.png`.
 
+## Interactive avatar
+
+- The supplied portrait is optimized to a 512 × 512 local PNG and displayed before the hero name.
+- Pointer tracking updates capped perspective tilt, shine, and eye highlights without moving the surrounding copy.
+- Pointer and keyboard activation trigger the blink animation.
+- Scroll progress applies a small scale, offset, corner-radius, and rotation morph; the full change remains within 16% scale, 8 pixels horizontal movement, 3 pixels vertical movement, and 8 degrees rotation.
+- Reduced-motion mode keeps the original static form.
+- Browser checks confirmed the avatar at desktop and 390-pixel mobile layouts with no horizontal overflow or console warnings.
+- Automated tests cover clamping, subtle motion limits, and the reduced-motion state. Screenshot: `interactive-avatar-mobile.png`.
+
 ## Not yet verified
 
 Live AI answers (no API credentials configured), real mobile hardware, a full assistive-technology audit, and public hosting/domain integration. Reduced-motion and WebGL fallback paths are implemented but have not been exercised through device emulation. The site is running locally, not publicly deployed.
